@@ -1,0 +1,15 @@
+{
+  "name": "checkboxes-of-life",
+  "version": "1.0.0",
+  "description": "Conway's Game of Life with checkboxes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p dist; cp -r src/html/* dist/; browserify src/js/main.js -o dist/checkboxes-of-life.js"
+  },
+  "author": "Jason A. Storey",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^8.0.2"
+  }
+}
