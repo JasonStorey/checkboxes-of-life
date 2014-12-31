@@ -38,13 +38,15 @@ Game.prototype.update = function update() {
 };
 
 Game.prototype.start = function start() {
-    this._timeoutId = setInterval(function(){
+    function gameLoop() {
+        this._timeoutId = window.requestAnimationFrame(gameLoop.bind(this));
         this.next();
-    }.bind(this), 50);
+    }
+    gameLoop.call(this);
 };
 
 Game.prototype.stop = function stop() {
-    clearInterval(this._timeoutId);
+    window.cancelAnimationFrame(this._timeoutId);
 };
 
 Game.prototype.randomise = function randomise() {
