@@ -18,8 +18,8 @@ game = new Game({
     onAtStart: onAtStart,
     elem: document.getElementById('container'),
     onUpdateCallback: function(genIndex, popCount) {
-        generation.innerText = genIndex;
-        population.innerText = popCount;
+        generation.innerHTML = genIndex;
+        population.innerHTML = popCount;
     }
 });
 
