@@ -20,9 +20,12 @@ Game.prototype.init = function init() {
             rowElem.className = 'row';
             this.elem.appendChild(rowElem);
         }
-
         cell.draw(rowElem);
 
+    }.bind(this));
+
+    this.config.onAtStart.forEach(function(i) {
+        this.cells[i].setAlive(true);
     }.bind(this));
 };
 
