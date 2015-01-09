@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <title>Checkboxes of Life</title>
     <style>
-        html, body, div, input {
+        html, body, div, input, ul, li {
             margin: 0;
             padding: 0;
             text-align: center;
             font-size: 12px;
             color: #2f2c2c;
             font-family: "Futura", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+            line-height: 18px;
+        }
+        #container {
+            margin-top: 20px;
         }
         #container .row {
-            line-height: 0px;
+            line-height: 0;
             text-align: center;
         }
         input[type="checkbox"] {
@@ -23,6 +27,12 @@
         .buttons {
             margin-top: 10px;
             margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 10px;
         }
     </style>
 </head>
@@ -37,6 +47,13 @@
     </div>
     <div><span>Population : </span><span id="population"></span></div>
     <div><span>Generation : </span><span id="generation"></span></div>
+    <ul>
+        <li>1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+        <li>2. Any live cell with two or three live neighbours lives on to the next generation.</li>
+        <li>3. Any live cell with more than three live neighbours dies, as if by overcrowding.</li>
+        <li>4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+    </ul>
+    <div></div>
     <script type="application/javascript" src="./checkboxes-of-life.js"></script>
 </body>
 </html>
