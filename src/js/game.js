@@ -6,6 +6,7 @@ function Game(config) {
     this.config = config;
     this.cells = [];
     this.elem = config.elem;
+    this.running = false;
     this._createCells(this.config.rows * this.config.cols);
 }
 
@@ -16,6 +17,7 @@ Game.prototype.init = function init() {
 
         if(colIndex === 0) {
             rowElem = document.createElement('div');
+            rowElem.className = 'row';
             this.elem.appendChild(rowElem);
         }
 
@@ -38,6 +40,10 @@ Game.prototype.update = function update() {
 };
 
 Game.prototype.start = function start() {
+    if(this.running) {
+        return;
+    }
+    this.running = true;
     function gameLoop() {
         this._timeoutId = window.requestAnimationFrame(gameLoop.bind(this));
         this.next();
@@ -46,6 +52,10 @@ Game.prototype.start = function start() {
 };
 
 Game.prototype.stop = function stop() {
+    if(!this.running) {
+        return;
+    }
+    this.running = false;
     window.cancelAnimationFrame(this._timeoutId);
 };
 
@@ -56,6 +66,7 @@ Game.prototype.randomise = function randomise() {
 };
 
 Game.prototype.reset = function reset() {
+    this.stop();
     this.cells.forEach(function(cell) {
         cell.reset();
     });

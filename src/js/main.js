@@ -10,9 +10,9 @@ var game,
     clearButton = document.getElementById('clearButton');
 
 game = new Game({
-    rows: 30,
-    cols: 45,
-    elem: document.body
+    rows: 40,
+    cols: 55,
+    elem: document.getElementById('container')
 });
 
 startButton.addEventListener('click', game.start.bind(game), false);
