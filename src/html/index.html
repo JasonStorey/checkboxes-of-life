@@ -7,6 +7,10 @@
         html, body, div, input {
             margin: 0;
             padding: 0;
+            text-align: center;
+            font-size: 12px;
+            color: #2f2c2c;
+            font-family: "Futura", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
         }
         #container .row {
             line-height: 0px;
@@ -17,7 +21,8 @@
             height: 12px;
         }
         .buttons {
-            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -30,6 +35,8 @@
         <input id="randomButton" type="button" value="randomise"/>
         <input id="clearButton" type="button" value="clear"/>
     </div>
+    <div><span>Population : </span><span id="population"></span></div>
+    <div><span>Generation : </span><span id="generation"></span></div>
     <script type="application/javascript" src="./checkboxes-of-life.js"></script>
 </body>
 </html>

@@ -38,6 +38,7 @@ Cell.prototype.next = function next() {
 Cell.prototype.update = function update() {
     this.alive = this.nextState;
     this.elem.checked = this.alive;
+    return this.alive;
 };
 
 Cell.prototype.setAlive = function setAlive(state) {

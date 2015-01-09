@@ -7,6 +7,7 @@ function Game(config) {
     this.cells = [];
     this.elem = config.elem;
     this.running = false;
+    this.generation = 0;
     this._createCells(this.config.rows * this.config.cols);
 }
 
@@ -27,9 +28,12 @@ Game.prototype.init = function init() {
     this.config.onAtStart.forEach(function(i) {
         this.cells[i].setAlive(true);
     }.bind(this));
+
+    this.config.onUpdateCallback(this.generation, this.config.onAtStart.length);
 };
 
 Game.prototype.next = function next() {
+    this.generation++;
     this.cells.forEach(function(cell) {
         cell.next();
     });
@@ -37,9 +41,13 @@ Game.prototype.next = function next() {
 };
 
 Game.prototype.update = function update() {
+    var livingCount = 0;
     this.cells.forEach(function(cell) {
-        cell.update();
+        if(cell.update()){
+            livingCount++;
+        }
     });
+    this.config.onUpdateCallback(this.generation, livingCount);
 };
 
 Game.prototype.start = function start() {
@@ -63,16 +71,25 @@ Game.prototype.stop = function stop() {
 };
 
 Game.prototype.randomise = function randomise() {
+    var livingCount = 0;
     this.cells.forEach(function(cell) {
-        cell.setAlive(Math.random() > 0.5);
+        if(Math.random() > 0.5) {
+            cell.setAlive(true);
+            livingCount++;
+        } else {
+            cell.setAlive(false);
+        }
     });
+    this.config.onUpdateCallback(this.generation, livingCount);
 };
 
 Game.prototype.reset = function reset() {
     this.stop();
+    this.generation = 0;
     this.cells.forEach(function(cell) {
         cell.reset();
     });
+    this.update();
 };
 
 Game.prototype._createCells = function createCells(numOfCells) {
