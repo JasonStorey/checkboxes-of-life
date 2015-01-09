@@ -10,8 +10,8 @@ var game,
     clearButton = document.getElementById('clearButton');
 
 game = new Game({
-    rows: 45,
-    cols: 80,
+    rows: 30,
+    cols: 45,
     elem: document.body
 });
 
