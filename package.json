@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist; cp -r src/html/* dist/; browserify src/js/main.js -o dist/checkboxes-of-life.js"
+    "build": "mkdir -p dist; cp -r src/html/* dist/; browserify src/js/main.js | uglifyjs > dist/checkboxes-of-life.js"
   },
   "author": "Jason A. Storey",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^8.0.2"
+    "browserify": "^8.0.2",
+    "uglify-js": "^2.4.16"
   }
 }
